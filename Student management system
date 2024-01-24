@@ -1,0 +1,36 @@
+class StudentManagementSystem:
+    def __init__(self):
+        self.student_records = {}
+
+    def add_student(self, roll_number, name, gpa):
+        if roll_number not in self.student_records:
+            self.student_records[roll_number] = {'Name': name, 'GPA': gpa}
+            print(f"Student {name} with Roll Number {roll_number} added successfully.")
+        else:
+            print(f"Error: Student with Roll Number {roll_number} already exists.")
+
+    def view_student(self, roll_number):
+        if roll_number in self.student_records:
+            student_info = self.student_records[roll_number]
+            print(f"Roll Number: {roll_number}\nName: {student_info['Name']}\nGPA: {student_info['GPA']}")
+        else:
+            print(f"Error: Student with Roll Number {roll_number} not found.")
+
+    def delete_student(self, roll_number):
+        if roll_number in self.student_records:
+            del self.student_records[roll_number]
+            print(f"Student with Roll Number {roll_number} deleted successfully.")
+        else:
+            print(f"Error: Student with Roll Number {roll_number} not found.")
+
+# Example Usage:
+sms = StudentManagementSystem()
+
+sms.add_student(101, 'John Doe', 3.5)
+sms.add_student(102, 'Jane Smith', 4.0)
+
+sms.view_student(101)
+
+sms.delete_student(102)
+
+sms.view_student(102)
